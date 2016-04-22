@@ -12,6 +12,11 @@
         controller: 'MainController',
         controllerAs: 'main'
       })
+      .when('/drivers', {
+        templateUrl: 'app/drivers/drivers.html',
+        controller: 'DriversController',
+        controllerAs: 'drivers'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('hiAngular')
+    .module('helloAngular')
     .config(config);
 
   /** @ngInject */

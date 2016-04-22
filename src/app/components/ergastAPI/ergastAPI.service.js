@@ -2,7 +2,7 @@
   'use_strict';
 
   angular
-    .module('hiAngular')
+    .module('helloAngular')
     .factory('ergastAPI', ergastAPI);
 
   /** @ngInject */

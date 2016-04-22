@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('hiAngular')
+    .module('helloAngular')
     .factory('githubContributor', githubContributor);
 
   /** @ngInject */

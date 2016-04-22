@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('hiAngular', ['ngRoute', 'toastr']);
+    .module('helloAngular', ['ngRoute', 'toastr']);
 
 })();

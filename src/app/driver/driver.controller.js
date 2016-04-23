@@ -6,7 +6,7 @@
     .controller('DriverController', DriverController);
 
   /** @ngInject */
-  function DriverController($timeout, $routeParams, ergastAPI) {
+  function DriverController($routeParams, ergastAPI) {
     var vm = this;
 
     vm.id = $routeParams.id;

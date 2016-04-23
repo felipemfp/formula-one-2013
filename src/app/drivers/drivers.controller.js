@@ -6,7 +6,7 @@
     .controller('DriversController', DriversController);
 
   /** @ngInject */
-  function DriversController($timeout, ergastAPI) {
+  function DriversController(ergastAPI) {
     var vm = this;
 
     vm.nameFilter = '';

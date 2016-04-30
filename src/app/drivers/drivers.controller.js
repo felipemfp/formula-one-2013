@@ -8,7 +8,7 @@
   /** @ngInject */
   function DriversController(ergastAPI) {
     var vm = this;
-
+    vm.loading = true;
     vm.nameFilter = '';
     vm.driversList = [];
 
@@ -20,6 +20,7 @@
     ergastAPI.getDrivers().then(function(fetchedData) {
       //Dig into the responde to get the relevant data
       vm.driversList = fetchedData;
+      vm.loading = false;
     });
   }
 })();

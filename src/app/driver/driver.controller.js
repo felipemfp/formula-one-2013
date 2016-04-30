@@ -10,6 +10,7 @@
     var vm = this;
 
     vm.id = $routeParams.id;
+    vm.loading = true;
     vm.races = [];
     vm.driver = null;
 
@@ -19,6 +20,7 @@
 
     ergastAPI.getDriverRaces(vm.id).then(function(fetchedData) {
       vm.races = fetchedData;
+      vm.loading = false;
     });
   }
 })();

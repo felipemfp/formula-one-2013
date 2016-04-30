@@ -8,12 +8,12 @@
   function routeConfig($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'app/drivers/drivers.html',
+        templateUrl: 'app/drivers/drivers.view.html',
         controller: 'DriversController',
         controllerAs: 'drivers'
       })
       .when('/drivers/:id', {
-        templateUrl: 'app/driver/driver.html',
+        templateUrl: 'app/driver/driver.view.html',
         controller: 'DriverController',
         controllerAs: 'driver'
       })

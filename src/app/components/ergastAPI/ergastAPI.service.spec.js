@@ -31,7 +31,7 @@
 
       it('should return data', function() {
         $httpBackend
-          .when('JSONP', ergastAPI.apiHost + '/driverStandings.json?callback=JSON_CALLBACK')
+          .expectJSONP(ergastAPI.apiHost + '/driverStandings.json?callback=JSON_CALLBACK')
           .respond({
             "MRData": {
               "StandingsTable": {
@@ -82,7 +82,7 @@
 
       it('should log a error', function() {
         $httpBackend
-          .when('JSONP', ergastAPI.apiHost + '/driverStandings.json?callback=JSON_CALLBACK')
+          .expectJSONP(ergastAPI.apiHost + '/driverStandings.json?callback=JSON_CALLBACK')
           .respond(500);
         ergastAPI.getDrivers();
         $httpBackend.flush();
@@ -98,7 +98,7 @@
       it('should return data', function() {
         var id = 'vettel';
         $httpBackend
-          .when('JSONP', ergastAPI.apiHost + '/drivers/' + id + '/driverStandings.json?callback=JSON_CALLBACK')
+          .expectJSONP(ergastAPI.apiHost + '/drivers/' + id + '/driverStandings.json?callback=JSON_CALLBACK')
           .respond({
             "MRData": {
               "xmlns": "http:\/\/ergast.com\/mrd\/1.4",
@@ -150,7 +150,7 @@
       it('should log a error', function() {
         var id = 'someone';
         $httpBackend
-          .when('JSONP', ergastAPI.apiHost + '/drivers/' + id + '/driverStandings.json?callback=JSON_CALLBACK')
+          .expectJSONP(ergastAPI.apiHost + '/drivers/' + id + '/driverStandings.json?callback=JSON_CALLBACK')
           .respond(500);
         ergastAPI.getDriverDetails(id);
         $httpBackend.flush();
@@ -166,7 +166,7 @@
       it('should return data', function() {
         var id = 'vettel';
         $httpBackend
-          .when('JSONP', ergastAPI.apiHost + '/drivers/' + id + '/results.json?callback=JSON_CALLBACK')
+          .expectJSONP(ergastAPI.apiHost + '/drivers/' + id + '/results.json?callback=JSON_CALLBACK')
           .respond({
             "MRData": {
               "xmlns": "http:\/\/ergast.com\/mrd\/1.4",
@@ -215,7 +215,7 @@
       it('should log a error', function() {
         var id = 'someone';
         $httpBackend
-          .when('JSONP', ergastAPI.apiHost + '/drivers/' + id + '/results.json?callback=JSON_CALLBACK')
+          .expectJSONP(ergastAPI.apiHost + '/drivers/' + id + '/results.json?callback=JSON_CALLBACK')
           .respond(500);
         ergastAPI.getDriverRaces(id);
         $httpBackend.flush();

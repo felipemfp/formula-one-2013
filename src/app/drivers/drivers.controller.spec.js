@@ -2,60 +2,62 @@
   'use strict';
 
   describe('controllers', function() {
-    var vm, httpMock;
+    var vm, $httpBackend, ergastAPI;
 
     beforeEach(module('helloAngular'));
-    beforeEach(inject(function(_$controller_, _$httpBackend_) {
+    beforeEach(inject(function(_$controller_, _$httpBackend_, _ergastAPI_) {
       vm = _$controller_('DriversController');
+      ergastAPI = _ergastAPI_;
 
       // Then we create an $httpBackend instance. I'll talk about it below.
-      httpMock = _$httpBackend_;
+      $httpBackend = _$httpBackend_;
 
       // Here, we set the httpBackend standard response to the URL the controller is
       // supposed to retrieve from the API
-      httpMock.expectJSONP(
-        "http://ergast.com/api/f1/2013/driverStandings.json?callback=JSON_CALLBACK").respond({
-        "MRData": {
-          "StandingsTable": {
-            "StandingsLists": [{
-              "DriverStandings": [{
-                "Driver": {
-                  "givenName": 'Sebastian',
-                  "familyName": 'Vettel'
-                },
-                "points": "397",
-                "nationality": "German",
-                "Constructors": [{
-                  "name": "Red Bull"
-                }]
-              }, {
-                "Driver": {
-                  "givenName": 'Fernando',
-                  "familyName": 'Alonso'
-                },
-                "points": "242",
-                "nationality": "Spanish",
-                "Constructors": [{
-                  "name": "Ferrari"
-                }]
-              }, {
-                "Driver": {
-                  "givenName": 'Mark',
-                  "familyName": 'Webber'
-                },
-                "points": "199",
-                "nationality": "Australian",
-                "Constructors": [{
-                  "name": "Red Bull"
+      $httpBackend
+        .expectJSONP(ergastAPI.apiHost + "/driverStandings.json?callback=JSON_CALLBACK")
+        .respond({
+          "MRData": {
+            "StandingsTable": {
+              "StandingsLists": [{
+                "DriverStandings": [{
+                  "Driver": {
+                    "givenName": 'Sebastian',
+                    "familyName": 'Vettel'
+                  },
+                  "points": "397",
+                  "nationality": "German",
+                  "Constructors": [{
+                    "name": "Red Bull"
+                  }]
+                }, {
+                  "Driver": {
+                    "givenName": 'Fernando',
+                    "familyName": 'Alonso'
+                  },
+                  "points": "242",
+                  "nationality": "Spanish",
+                  "Constructors": [{
+                    "name": "Ferrari"
+                  }]
+                }, {
+                  "Driver": {
+                    "givenName": 'Mark',
+                    "familyName": 'Webber'
+                  },
+                  "points": "199",
+                  "nationality": "Australian",
+                  "Constructors": [{
+                    "name": "Red Bull"
+                  }]
                 }]
               }]
-            }]
+            }
           }
-        }
-      });
+        });
 
       // Then we flush the httpBackend to resolve the fake http call
-      httpMock.flush();
+      $httpBackend.flush();
     }));
 
     // Now, for the actual test, let's check if the driversList is actually retrieving

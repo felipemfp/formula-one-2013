@@ -9,6 +9,11 @@
 var gulp = require('gulp');
 var wrench = require('wrench');
 
+var coveralls = require('gulp-coveralls');
+
+gulp.src('coverage/**/lcov.info')
+  .pipe(coveralls());
+
 /**
  *  This will load all js or coffee files in the gulp directory
  *  in order to load all gulp tasks

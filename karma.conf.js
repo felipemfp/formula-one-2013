@@ -50,7 +50,7 @@ module.exports = function(config) {
 
     ngHtml2JsPreprocessor: {
       stripPrefix: conf.paths.src + '/',
-      moduleName: 'hiAngular'
+      moduleName: 'helloAngular'
     },
 
     logLevel: 'WARN',
@@ -73,7 +73,7 @@ module.exports = function(config) {
     ],
 
     coverageReporter: {
-      type : 'html',
+      type : 'lcov',
       dir : 'coverage/'
     },
 

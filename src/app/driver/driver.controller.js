@@ -13,12 +13,12 @@
     vm.races = [];
     vm.driver = null;
 
-    ergastAPI.getDriverDetails(vm.id).success(function (response) {
-        vm.driver = response.MRData.StandingsTable.StandingsLists[0].DriverStandings[0];
+    ergastAPI.getDriverDetails(vm.id).then(function(fetchedData) {
+      vm.driver = fetchedData;
     });
 
-    ergastAPI.getDriverRaces(vm.id).success(function (response) {
-        vm.races = response.MRData.RaceTable.Races;
+    ergastAPI.getDriverRaces(vm.id).then(function(fetchedData) {
+      vm.races = fetchedData;
     });
   }
 })();
